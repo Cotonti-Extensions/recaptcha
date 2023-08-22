@@ -14,9 +14,9 @@ Hooks=users.register.add.first,comments.send.first
 
 defined('COT_CODE') or die('Wrong URL.');
 
-if (\Cot::$cfg['captchamain'] === 'recaptcha' && \Cot::$usr['id'] == '0') {
+if (\Cot::$cfg['captchamain'] === 'recaptcha' && \Cot::$usr['id'] === 0) {
 	$response = cot_import('g-recaptcha-response', 'P', 'TXT');
-	if (!cot_recaptcha_valid($response)) {
+	if (!cot_captcha_validate($response)) {
 		cot_error('recaptcha_verification_failed', 'response');
 	}
 }

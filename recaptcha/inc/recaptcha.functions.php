@@ -19,7 +19,7 @@ function recaptcha_generate()
     if (empty(\Cot::$cfg['plugin']['recaptcha']['sitekey'])) {
         return \Cot::$L['recaptcha_no_sitekey'];
     } else {
-        $result = ' <script src="https://www.google.com/recaptcha/api.js"></script>';
+        $result = '<script src="https://www.google.com/recaptcha/api.js"></script>';
         $result .= '<div class="g-recaptcha" data-sitekey="' . \Cot::$cfg['plugin']['recaptcha']['sitekey'] . '"></div>';
         return $result;
     }

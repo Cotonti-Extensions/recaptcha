@@ -1,28 +1,22 @@
 <?php
 /* ====================
 [BEGIN_COT_EXT]
-Code=recaptcha
-Hooks=users.register.add.first
-Tags=
-Order=10
+Hooks=users.register.add.first,comments.send.first
 [END_COT_EXT]
 ==================== */
 
 /**
- * reCAPTCHA Plugin
+ * reCAPTCHA validate
  *
- * @package Cotonti
- * @version 0.0.6
- * @author esclkm, Macik
- * @copyright Copyright (c) Pavel Mikulik, Andrey Matsovkin 2008-2011
- * @license BSD
+ * @package recaptcha
+ * @author esclkm, Andrey Matsovkin, Kalnov Alexey <kalnovalexey@yandex.ru>
  */
 
 defined('COT_CODE') or die('Wrong URL.');
 
-if (!cot_captcha_validate(''))
-{
-	cot_error('captcha_verification_failed');
+if (\Cot::$cfg['captchamain'] === 'recaptcha' && \Cot::$usr['id'] == '0') {
+	$response = cot_import('g-recaptcha-response', 'P', 'TXT');
+	if (!cot_recaptcha_valid($response)) {
+		cot_error('recaptcha_verification_failed', 'response');
+	}
 }
-
-?>

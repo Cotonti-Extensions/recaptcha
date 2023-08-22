@@ -1,28 +1,29 @@
 <?php
 /**
- * Russian Language File for reCAPTCHA Plugin
+ * English language file for reCAPTCHA plugin
  *
- * @package Cotonti
- * @version 0.1.0
- * @author Cotonti Translators Team
- * @copyright Copyright (c) Cotonti Team 2008-2009
- * @license BSD
+ * @package recaptcha
+ * @author esclkm, Andrey Matsovkin, Kalnov Alexey <kalnovalexey@yandex.ru>
  */
+
+defined('COT_CODE') or die('Wrong URL.');
 
 /**
  * Plugin Body
  */
 
-$L['captcha_verification_failed'] = 'Verificaion failed!';
+$L['recaptcha_no_sitekey'] = 'Get the site key '
+    . '<a href="https://www.google.com/recaptcha/admin/" target="_blank">https://www.google.com/recaptcha/admin</a> '
+    . 'and fill it in the recaptcha plugin settings';
+
+$L['recaptcha_verification_failed'] = 'Go re-check reCAPTCHA!';
+$L['captcha_verification_failed'] = $L['recaptcha_verification_failed'];
 
 /**
  * Plugin Config
  */
 
-$L['cfg_publickey'] = array('reCaptcha Public key','change it with key for current domain ('
-.$cfg['mainurl'].'), obtain it <a href="https://www.google.com/recaptcha/admin/list">here</a>');
-$L['cfg_privatekey'] = array('reCaptcha Private key','change it with key for current domain');
-$L['cfg_settings'] = array('var RecaptchaOptions = {...}', "example:<br />lang : 'fr',<br />
-theme : 'white',");
-
-?>
+$L['cfg_sitekey'] = 'Site Key';
+$L['cfg_sitekey_hint']= 'Set key for current domain (' . \Cot::$cfg['mainurl'] . '). ' .
+    'You can obtain it <a href="https://www.google.com/recaptcha/admin/" target="_blank">here</a>.';
+$L['cfg_secretkey'] = 'Secret Key';

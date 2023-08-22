@@ -15,7 +15,7 @@ Plugin page: https://www.cotonti.com/extensions/security-authentication/recaptch
 - Install the plugin in AdminCP
 - Visit https://developers.google.com/recaptcha to obtain reCAPTCHA keys and get detailed info
 - Configure the plugin (don't forget to add the keys!)
-- Add tags to **users.register.tpl**: {USERS_REGISTER_VERIFYIMG}, to **comments.tpl**: {COMMENTS_FORM_VERIFY_IMG}, to **contact.tpl**: {CONTACT_FORM_VERIFY_IMG}
+- Add tags to **users.register.tpl**: `{USERS_REGISTER_VERIFYIMG}`, to **comments.tpl**: `{COMMENTS_FORM_VERIFY_IMG}`, to **contact.tpl**: `{CONTACT_FORM_VERIFY_IMG}`
 
 ## Developers API
 

@@ -14,7 +14,7 @@ defined('COT_CODE') or die('Wrong URL.');
 
 $L['recaptcha_no_sitekey'] = 'Get the site key '
     . '<a href="https://www.google.com/recaptcha/admin/" target="_blank">https://www.google.com/recaptcha/admin</a> '
-    . 'and fill it in the recaptcha plugin settings';
+    . 'and fill it in the recaptcha plugin settings. reCAPTCHA v2 is currently supported.';
 
 $L['recaptcha_verification_failed'] = 'Go re-check reCAPTCHA!';
 $L['captcha_verification_failed'] = $L['recaptcha_verification_failed'];

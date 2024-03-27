@@ -17,8 +17,19 @@ Tags=comments.tpl: {COMMENTS_FORM_VERIFY_IMG}
 
 defined('COT_CODE') or die("Wrong URL.");
 
-if (\Cot::$usr['id'] === 0 && \Cot::$cfg['captchamain'] === 'recaptcha') {
-	$t->assign([
-		'COMMENTS_FORM_VERIFYIMG' => cot_captcha_generate(),
-	]);
+if (Cot::$usr['id'] === 0 && Cot::$cfg['captchamain'] === 'recaptcha') {
+    // After 0.9.25 release
+    //$t->assign(cot_generateCaptchaTags(null, null, 'COMMENTS_FORM_'));
+
+    $captcha = cot_captcha_generate();
+    $t->assign([
+        'COMMENTS_FORM_VERIFY_IMG' => $captcha,
+    ]);
+
+    if (isset(Cot::$cfg['legacyMode']) && Cot::$cfg['legacyMode']) {
+        // @deprecated in 0.9.24
+        $t->assign([
+            'COMMENTS_FORM_VERIFYIMG' => $captcha,
+        ]);
+    }
 }

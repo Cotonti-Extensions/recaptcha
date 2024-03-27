@@ -17,8 +17,19 @@ Tags=users.register.tpl:{USERS_REGISTER_VERIFYIMG}
 
 defined('COT_CODE') or die('Wrong URL');
 
-if (\Cot::$cfg['captchamain'] === 'recaptcha') {
-	$t->assign([
-		'USERS_REGISTER_VERIFYIMG' => cot_captcha_generate(),
-	]);
+if (Cot::$cfg['captchamain'] === 'recaptcha') {
+    // After 0.9.25 release
+    //$t->assign(cot_generateCaptchaTags(null, null, 'USERS_REGISTER_'));
+
+    $captcha = cot_captcha_generate();
+    $t->assign([
+        'USERS_REGISTER_VERIFY_IMG' => $captcha,
+    ]);
+
+    if (isset(Cot::$cfg['legacyMode']) && Cot::$cfg['legacyMode']) {
+        // @deprecated in 0.9.24
+        $t->assign([
+            'USERS_REGISTER_VERIFYIMG' => $captcha,
+        ]);
+    }
 }

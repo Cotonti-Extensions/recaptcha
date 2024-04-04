@@ -63,7 +63,15 @@ function recaptcha_validate($response)
         $context = stream_context_create($options);
         $result = file_get_contents($url, false, $context);
 
+        if (empty($result)) {
+            return false;
+        }
+
         $result = json_decode($result, true);
+
+        if (empty($result) || !is_array($result)) {
+            return false;
+        }
 
         return isset($result['success']) ? $result['success'] : false ;
 

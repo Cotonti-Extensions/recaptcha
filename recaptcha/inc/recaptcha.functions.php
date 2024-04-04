@@ -16,11 +16,11 @@ defined('COT_CODE') or die('Wrong URL.');
  */
 function recaptcha_generate()
 {
-    if (empty(\Cot::$cfg['plugin']['recaptcha']['sitekey'])) {
-        return \Cot::$L['recaptcha_no_sitekey'];
+    if (empty(Cot::$cfg['plugin']['recaptcha']['sitekey'])) {
+        return Cot::$L['recaptcha_no_sitekey'];
     } else {
         $result = '<script src="https://www.google.com/recaptcha/api.js"></script>';
-        $result .= '<div class="g-recaptcha" data-sitekey="' . \Cot::$cfg['plugin']['recaptcha']['sitekey'] . '"></div>';
+        $result .= '<div class="g-recaptcha" data-sitekey="' . Cot::$cfg['plugin']['recaptcha']['sitekey'] . '"></div>';
         return $result;
     }
 }
@@ -34,10 +34,14 @@ function recaptcha_generate()
  */
 function recaptcha_validate($response)
 {
-    \Cot::$L['captcha_verification_failed'] = \Cot::$L['recaptcha_verification_failed'];
+    Cot::$L['captcha_verification_failed'] = Cot::$L['recaptcha_verification_failed'];
 
     if (empty($response)) {
         $response = cot_import('g-recaptcha-response', 'P', 'TXT');
+    }
+
+    if (empty($response)) {
+        return false;
     }
 
     try {
@@ -45,7 +49,7 @@ function recaptcha_validate($response)
         $data = [
             'secret' => Cot::$cfg['plugin']['recaptcha']['secretkey'],
             'response' => $response,
-            'remoteip' => \Cot::$usr['ip'],
+            'remoteip' => Cot::$usr['ip'],
         ];
 
         $options = [
@@ -56,7 +60,7 @@ function recaptcha_validate($response)
             ],
         ];
 
-        $context  = stream_context_create($options);
+        $context = stream_context_create($options);
         $result = file_get_contents($url, false, $context);
 
         $result = json_decode($result, true);

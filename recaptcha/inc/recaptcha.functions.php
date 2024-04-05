@@ -63,14 +63,14 @@ function recaptcha_validate($response)
         $context = stream_context_create($options);
         $result = file_get_contents($url, false, $context);
 
-        if (version_compare(PHP_VERSION, '7.1', '<') && empty($result)) {
-            $options['ssl'] = [
-                'verify_peer' => false,
-                //'verify_peer_name' => false,
-            ];
-            $context = stream_context_create($options);
-            $result = file_get_contents($url, false, $context);
-        }
+//        if (version_compare(PHP_VERSION, '7.1', '<') && empty($result)) {
+//            $options['ssl'] = [
+//                'verify_peer' => false,
+//                //'verify_peer_name' => false,
+//            ];
+//            $context = stream_context_create($options);
+//            $result = file_get_contents($url, false, $context);
+//        }
 
         if (empty($result)) {
             return false;

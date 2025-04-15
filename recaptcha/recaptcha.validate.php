@@ -1,7 +1,7 @@
 <?php
 /* ====================
 [BEGIN_COT_EXT]
-Hooks=users.register.add.first,comments.send.first
+Hooks=users.register.add.first
 [END_COT_EXT]
 ==================== */
 

@@ -4,10 +4,10 @@
 Code=recaptcha
 Name=reCAPTCHA
 Description=Plugin to protect your site from spam and abuse with a reCAPTCHA.
-Version=2.1
-Date=2024-03-27
+Version=2.2
+Date=2025-04-15
 Author=esclkm, Andrey Matsovkin, Kalnov Alexey <kalnovalexey@yandex.ru>
-Copyright=(c) 2008-2011 Pavel Mikulik and Andrey Matsovkin, 2023-2024 Cotonti Team
+Copyright=(c) 2008-2011 Pavel Mikulik and Andrey Matsovkin, 2023-2025 Cotonti Team
 Notes=Visit https://developers.google.com/recaptcha to obtain reCAPTCHA keys and get detailed info
 SQL=
 Auth_guests=R
@@ -26,8 +26,7 @@ secretkey=02:string:::Secret Key
  * reCAPTCHA Plugin
  *
  * @package recaptcha
- * @version 2.1
  * @author esclkm, Andrey Matsovkin, Kalnov Alexey <kalnovalexey@yandex.ru>
- * @copyright (c) 2008-2011 Pavel Mikulik and Andrey Matsovkin, 2023-2024 Cotonti Team
+ * @copyright (c) 2008-2011 Pavel Mikulik and Andrey Matsovkin, 2023-2025 Cotonti Team
  * @license BSD
  */
